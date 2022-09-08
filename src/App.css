@@ -1,0 +1,157 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+}
+
+.header__logo {
+    height: 25px;
+    object-fit: contain;
+    margin-left: 10px;
+}
+
+.header__center {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    border: 1px solid lightgray
+}
+
+.header__searchbutton {
+    width: 50px !important;
+    border-color: #fafafa;
+    border-left: 1px solid lightgray;
+    color: gray;
+    cursor: pointer;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+}
+
+.header__icon {
+    margin-right: 12px;
+}
+
+.header__center > input {
+    flex: 1;
+}
+.sidebarrow {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.sidebarrow__icon {
+    color: #606060;
+    font-size: large !important;
+}
+
+.sidebarrow__title {
+    flex: 1;
+    margin-left: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.sidebarrow:hover {
+    background-color: lightgray;
+    cursor: pointer
+}
+
+.sidebarrow:hover >.sidebarrow__icon {
+    color: red
+}
+
+.sidebarrow:hover >.sidebarrow__title {
+    font-weight: bold;
+}
+
+.sidebarrow.selected {
+    background-color: lightgray;
+    width: 186px;
+}
+
+.sidebarrow.selected >.sidebarrow__icon {
+    color: red
+}
+
+.sidebarrow.selected >.sidebarrow__title {
+    font-weight: bold;
+}
+.sidebar {
+    flex: 0.2;
+    width: 226px;
+}
+.sidebar > hr {
+    height: 1px;
+    border: 0;
+    background-color: lightgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+   
+}
+.videos{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 1269px;
+}
+.videocard{
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.right{
+    width: 1200px;
+    background-color: lightgray;
+}
+.info{
+    height: 337px;
+    width: 400px;
+    padding:5px;
+}
+.react-player{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.react-player{
+    display: flex;
+}
+.videoplayer{
+    border: 1px solid black;
+}
+.like{
+    margin-left: 500px;
+}
+.dislike{
+    margin-left: 15px;
+}
+.share{
+    margin-left: 12px;
+}
+.watchlater{
+    margin-left: 12px;
+}
+.download{
+    margin-left: 12px;
+}
+.title{
+    margin-left: 52px;
+}
+.datainfo{
+    margin-left: 52px;
+}
