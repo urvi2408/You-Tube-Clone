@@ -13,9 +13,27 @@ const watchlater_reducer = ( state =  intialstate , action ) => {
                 ...state.WatchLaterList,
                 {
                     WatchLaterList:action?.payload?.video
-            }
+                }
             ]
         }
+
+        case "DELETE_WATCHLATER_VIDEO":
+            const newWatchLaterList = state?.WatchLaterList?.filter((curElem) => {
+                return(
+                    curElem?.WatchLaterList?.id !== action?.payload?.video?.WatchLaterList?.id)
+                }
+                )
+            return {
+                ...state,
+                WatchLaterList:newWatchLaterList
+              };
+
+        case "REMOVE_WATCHLATER_VIDEO":
+            return {
+               ...state,
+                WatchLaterList:[]
+            };
+
         default:
         return state;
     } 

@@ -22,7 +22,11 @@ function Header () {
           </div>
           
           <div className="header__center">
-            <input type='text' placeholder='Search' onChange={(e) => setInputSearch(e.target.value)} value={inputSearch}/>
+            <input type='text' 
+                   placeholder='Search' 
+                   onChange={(e) => setInputSearch(e.target.value)}
+                   value={inputSearch}
+            />
             <Link to={`/inputSearch/${inputSearch}`}>
               <SearchOutlined  className='header__searchbutton'/>
             </Link>

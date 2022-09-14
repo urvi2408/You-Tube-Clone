@@ -75,7 +75,7 @@
 
 .sidebarrow.selected {
     background-color: lightgray;
-    width: 186px;
+    width: 184px;
 }
 
 .sidebarrow.selected >.sidebarrow__icon {
@@ -87,7 +87,7 @@
 }
 .sidebar {
     flex: 0.2;
-    width: 226px;
+    width: 224px;
 }
 .sidebar > hr {
     height: 1px;
@@ -130,9 +130,7 @@
 }
 .react-player{
     display: flex;
-}
-.videoplayer{
-    border: 1px solid black;
+    /* height: 25000px; */
 }
 .like{
     margin-left: 500px;
@@ -154,4 +152,17 @@
 }
 .datainfo{
     margin-left: 52px;
+}
+.searchsidebar{
+    display: flex;
+}
+.searchvideoes{
+    display: flex;
+    flex-wrap: wrap;
+}
+.leftsidebar{
+    width: 226px;
+}
+.btn{
+    margin-left: 288px;
 }
