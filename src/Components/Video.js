@@ -7,22 +7,22 @@ import "../App.css";
 import RecommendedVideos from './RecommendedVideos';
 import { DateTime } from 'luxon';
 import {useDispatch} from "react-redux";
-import { AddWatchLaterVideo,AddLikeVideo,AddVideo } from '../Actions';
+import { AddWatchLaterVideo,AddLikeVideo } from '../Actions';
 import { LikeOutlined ,DislikeOutlined ,ShareAltOutlined,FieldTimeOutlined,DownloadOutlined} from '@ant-design/icons';
-import SideBar from './SideBar';
 
 const Video = () => {
     const {id} = useParams();
     const [data,setData] = useState([]);
+    // const [buttonState,setButtonState]=useState(false);
 
     const dispatch = useDispatch();
    
     
     useEffect(() => {
       axios
-        .get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&part=player&part=replies&id=${id}&key=AIzaSyCAdv84hg9sERDkh6qtL5Vuk-c9bUlI02k`)
+        .get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&part=player&id=${id}&key=AIzaSyCAdv84hg9sERDkh6qtL5Vuk-c9bUlI02k`)
         .then(response => {
-          console.log(response.data.items);
+          console.log("reeee",response.data.items);
           setData(response.data.items);
         })
         .catch(error => {
@@ -31,13 +31,12 @@ const Video = () => {
     }, [id])
 
     const WatchLater = () => {
-      dispatch(AddWatchLaterVideo(data))
+      dispatch(AddWatchLaterVideo(data[0]))
     }
 
     const LikeVideo = () => {
-      dispatch(AddLikeVideo(data))
+      dispatch(AddLikeVideo(data[0]))
     }
-
 
   return (
     <>
@@ -49,31 +48,44 @@ const Video = () => {
         const url = item.player.embedHtml;
           return(
           <>
-          <Header/>
-          <div className='react-player'>
-          <div className='videoplayer'>
-          <ReactPlayer url={url} controls height={480} width={900}/>
-          </div>
-          <RecommendedVideos/>
-          </div>
-          <h4 className='title'>{snippet.title}</h4>
-          <div className='datainfo'>
-          {timestamp}   /  views {item.statistics.viewCount}<br/>
-          <LikeOutlined/>{item.statistics.viewCount}<br/><br/>
-          </div>
+            <Header/>
+            <div className='react-player'>
+              <div className='videoplayer'>
+                <ReactPlayer url={url} 
+                             controls 
+                             height={480} 
+                             width={900}
+                />  
+              </div>
+              <RecommendedVideos/>
+            </div>
+
+            <h4 className='title'>{snippet.title}</h4>
+            <div className='datainfo'>
+              {timestamp}   /  views {item.statistics.viewCount}<br/>
+              <LikeOutlined/>{item.statistics.viewCount}<br/><br/>
+            </div>
           </>
           );
-          })
-        }
+      })
+    }
     <div className='icons'>
-    <LikeOutlined onClick={LikeVideo} className='like'/>  like
-    <DislikeOutlined  className="dislike"/>   Dislike
-    <ShareAltOutlined className="share"/>   Share
-    <FieldTimeOutlined onClick={WatchLater} className="watchlater"/>  Watch Later
-    <DownloadOutlined className='download'/>  DownLoad
+      {/* <button className='button' 
+              onClick={()=>{ setButtonState(true)}}  
+              disabled={buttonState}> */}
+        <LikeOutlined onClick={LikeVideo} className='like'/>  like 
+      {/* </button> */}
+      <DislikeOutlined  className="dislike"/>   Dislike
+      <ShareAltOutlined className="share"/>   Share
+      {/* <button className='button' 
+              onClick={()=>{ setButtonState(true)}}  
+              disabled={buttonState}> */}
+         <FieldTimeOutlined onClick={WatchLater} className="watchlater"/>  Watch Later
+      {/* </button> */}
+      <DownloadOutlined className='download'/>  DownLoad
     </div>
   </>
   )
 }
 
-export default Video
+export default Video;

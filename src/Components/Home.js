@@ -9,11 +9,13 @@ const Home = () => {
     <>
       <Header />
       <div className='content'>
-      <SideBar/>
-      <RecommendedVideos/>
+        <div className='leftsidebar'>
+          <SideBar/>
+        </div>
+        <RecommendedVideos/>
       </div>
       </>
   )
 }
 
-export default Home
+export default Home;

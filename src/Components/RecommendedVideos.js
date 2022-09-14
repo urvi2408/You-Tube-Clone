@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {DateTime} from 'luxon';
-import { LikeOutlined} from '@ant-design/icons';
 import {useDispatch} from "react-redux";
 import '../App.css';
 import {Link} from "react-router-dom";
@@ -42,11 +41,15 @@ const RecommendedVideos = () => {
                       <>  
                       <div className='info'>
                           <Link to={`/${item.id}`}>
-                            <img onClick={() => HistroyVideo(item)}   className='videocard__image' src={snippet.thumbnails.medium.url} alt="#"/><br/>
+                            <img onClick={() => HistroyVideo(item)}   
+                                 className='videocard__image' 
+                                 src={snippet.thumbnails.medium.url}
+                                 alt="#"
+                            /><br/>
                           </Link>
-                            <h6>{snippet.title}</h6>
-                            {timestamp}   /  views {item.statistics.viewCount}<br/>
-                            Likes {item.statistics.viewCount}<br/><br/>
+                          <h6>{snippet.title}</h6>
+                          {timestamp}   /  views {item.statistics.viewCount}<br/>
+                          Likes {item.statistics.viewCount}<br/><br/>
                       </div>
                       </>
                     )

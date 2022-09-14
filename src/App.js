@@ -18,6 +18,7 @@ function App() {
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home/>}/>
+      <Route path="/home" element={<Home/>}/>
       <Route path="/:id" element={<Video/>}/>
       <Route path='/inputSearch/:inputSearch' element={<SearchBar/>}/>
       <Route path="/watchlater" element={<Watchlater/>}/>
