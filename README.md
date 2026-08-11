@@ -1,70 +1,248 @@
-# Getting Started with Create React App
+# 🎥 YouTube Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fully functional YouTube clone built with React, Redux, and the YouTube Data API v3. Features include video browsing, searching, watch history, liked videos, watch later functionality, and a collapsible sidebar.
 
-## Available Scripts
+[![Live Demo](https://img.shields.io/badge/Demo-Live-success?style=for-the-badge&logo=vercel)](https://you-tube-clone-smoky-phi.vercel.app)
+[![React](https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![Redux](https://img.shields.io/badge/Redux-4.2.0-purple?style=for-the-badge&logo=redux)](https://redux.js.org/)
 
-In the project directory, you can run:
+## 🌐 Live Demo
 
-### `npm start`
+**[Visit Live Site →](https://you-tube-clone-smoky-phi.vercel.app)**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Core Features
+- 🏠 **Home Page** - Browse trending and popular videos with responsive grid layout
+- 🔍 **Search** - Search for videos using the YouTube Data API with real-time results
+- 📺 **Video Player** - Watch videos with full controls, description, and recommendations
+- ❤️ **Like/Unlike Videos** - Save your favorite videos with visual feedback
+- ⏰ **Watch Later** - Add/remove videos to watch later queue
+- 📜 **History** - Automatic tracking of your viewing history
+- 🎯 **Collapsible Sidebar** - Toggle sidebar on/off for better viewing experience
+- 📱 **Responsive Design** - Works perfectly on desktop, tablet, and mobile
 
-### `npm test`
+### UI/UX Features
+- ✅ Clean, professional YouTube-like interface
+- ✅ Smooth animations and hover effects
+- ✅ Fixed height video player page with scrollable sections
+- ✅ Share popup with social media integration (Facebook, Twitter, WhatsApp, LinkedIn, Email)
+- ✅ Copy link functionality with success feedback
+- ✅ Delete individual videos from lists
+- ✅ Clear all functionality for lists
+- ✅ Empty states with helpful messages
+- ✅ Like count and view count formatting (1.5M, 234K)
+- ✅ Relative timestamps (2 hours ago, 3 days ago)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🖼️ Screenshots
 
-### `npm run build`
+### Home Page
+Browse trending videos in a responsive grid layout with collapsible sidebar.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Video Player
+Watch videos with description, like/unlike, share, and "Up Next" recommendations.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Liked Videos
+View all your liked videos in a grid layout with delete functionality.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Watch Later & History
+Manage your saved videos and viewing history with ease.
 
-### `npm run eject`
+## 🚀 Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Node.js (v14 or higher)
+- npm or yarn
+- YouTube Data API v3 key
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd you-tube-clone
+```
 
-## Learn More
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Start the development server:
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-### Code Splitting
+### Building for Production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm run build
+```
 
-### Analyzing the Bundle Size
+The optimized build will be created in the `build` folder.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🛠️ Technologies Used
 
-### Making a Progressive Web App
+- **React** (18.2.0) - UI library
+- **Redux** - State management with redux-thunk and redux-logger
+- **React Router** (6.3.0) - Navigation
+- **Axios** - HTTP client for API calls
+- **React Player** (2.10.1) - Video player component
+- **Ant Design Icons** (4.7.0) - Icon library
+- **Luxon** (3.0.3) - Date/time formatting
+- **YouTube Data API v3** - Video data and search
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📁 Project Structure
 
-### Advanced Configuration
+```
+src/
+├── Actions/           # Redux action creators
+│   └── index.js
+├── Components/        # React components
+│   ├── Header.js
+│   ├── Home.js
+│   ├── Video.js
+│   ├── RecommendedVideos.js
+│   ├── SideBar.js
+│   ├── SideBarRow.js
+│   ├── SearchBar.js
+│   ├── LikeVideo.js
+│   ├── WatchLater.js
+│   └── History.js
+├── Reducers/          # Redux reducers
+│   ├── index.js
+│   ├── likeVideo_reducer.js
+│   ├── watchlater_reducer.js
+│   └── History_reducer.js
+├── context/           # React Context
+│   └── SidebarContext.js
+├── App.js             # Main app component
+├── App.css            # Global styles
+├── Store.js           # Redux store configuration
+└── index.js           # App entry point
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🎯 Key Functionalities
 
-### Deployment
+### Video Management
+- **Like/Unlike**: Toggle like status with visual feedback (filled red heart when liked)
+- **Watch Later**: Add/remove videos with toggle functionality
+- **History**: Automatic tracking when videos are watched
+- **Delete**: Remove individual videos from any list
+- **Clear All**: Clear entire lists with one click
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Search
+- Real-time search using YouTube API
+- Results display in grid layout
+- Clickable video cards navigate to video player
 
-### `npm run build` fails to minify
+### Sidebar
+- Collapsible on all pages
+- State persists across navigation
+- Auto-hides on mobile devices
+- Smooth animation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Video Player
+- Fixed height layout
+- Scrollable description section
+- Scrollable "Up Next" recommendations
+- Share functionality with social media integration
+- Like count and view count display
+
+## 🔧 State Management
+
+### Redux Store Structure
+```javascript
+{
+  w_reducer: {
+    WatchLaterList: [ /* video objects */ ]
+  },
+  L_reducer: {
+    likeVideoList: [ /* video objects */ ]
+  },
+  H_reducer: {
+    historylist: [ /* video objects */ ]
+  }
+}
+```
+
+### Context
+- **SidebarContext**: Manages global sidebar open/close state
+
+## 📱 Responsive Breakpoints
+
+- **Desktop**: > 1024px - Full layout with sidebar
+- **Tablet**: 768px - 1024px - Adjusted grid, collapsible sidebar
+- **Mobile**: < 768px - Stacked layout, sidebar hidden by default
+
+## 🎨 Design Features
+
+### Color Scheme
+- **Primary**: #ff0000 (YouTube Red)
+- **Text Dark**: #030303
+- **Text Gray**: #606060
+- **Background**: #f9f9f9
+- **Hover**: #f2f2f2
+
+### Typography
+- System font stack for native feel
+- Sizes: 18px (titles), 14px (body), 12px (metadata)
+- Weights: 400 (regular), 500 (medium), 600 (semibold)
+
+## 🚀 Deployment
+
+The app is deployed on Vercel at: **https://you-tube-clone-smoky-phi.vercel.app**
+
+### Deploy Your Own
+
+1. Fork this repository
+2. Create a Vercel account
+3. Import your forked repository
+4. Deploy with default settings
+5. Your site will be live!
+
+## 📝 Available Scripts
+
+- `npm start` - Runs the app in development mode
+- `npm run build` - Builds the app for production
+- `npm test` - Runs the test suite
+- `npm run eject` - Ejects from Create React App (one-way operation)
+
+## 🐛 Known Issues
+
+- Browser data warning (caniuse-lite) - Run `npx update-browserslist-db@latest` to update
+- Some ESLint warnings for missing dependencies (non-critical)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🙏 Acknowledgments
+
+- YouTube Data API v3 for providing video data
+- React and Redux communities
+- All open-source libraries used in this project
+- Vercel for hosting
+
+## 📞 Support
+
+For issues or questions, please open an issue on GitHub.
+
+---
+
+**Made with ❤️ using React and Redux**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/you-tube-clone)
