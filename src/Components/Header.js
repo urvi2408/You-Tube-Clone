@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { MenuOutlined, SearchOutlined, VideoCameraOutlined, AppstoreOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
+import { MenuOutlined, SearchOutlined } from '@ant-design/icons';
 import { useSidebar } from '../context/SidebarContext';
 import '../App.css';
 

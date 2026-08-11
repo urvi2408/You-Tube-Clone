@@ -1,7 +1,6 @@
-import React from 'react';
 import SideBarRow from './SideBarRow';
 import '../App.css';
-import {HomeOutlined,FireOutlined,YoutubeOutlined,HistoryOutlined,PlaySquareOutlined,DownloadOutlined,FieldTimeOutlined,LikeOutlined} from '@ant-design/icons';
+import {HomeOutlined,HistoryOutlined,FieldTimeOutlined,LikeOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 const SideBar = () => {

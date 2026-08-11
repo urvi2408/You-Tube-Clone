@@ -13,7 +13,6 @@ import {
   LikeFilled,
   ShareAltOutlined,
   FieldTimeOutlined,
-  DownloadOutlined,
   CloseOutlined,
   FacebookFilled,
   TwitterOutlined,
