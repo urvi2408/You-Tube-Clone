@@ -1,45 +1,54 @@
-import React,{useState} from 'react';
-import { Link } from 'react-router-dom';
-import {MenuOutlined,SearchOutlined,VideoCameraOutlined,AppstoreOutlined,BellOutlined,UserOutlined} from '@ant-design/icons'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { MenuOutlined, SearchOutlined, VideoCameraOutlined, AppstoreOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
+import { useSidebar } from '../context/SidebarContext';
 import '../App.css';
 
-function Header () {
-
+function Header() {
   const [inputSearch, setInputSearch] = useState('');
-  console.log(inputSearch);
+  const navigate = useNavigate();
+  const { toggleSidebar } = useSidebar();
 
-    return (
-        <div className='header'>
-          <div className="header__left">
-            <MenuOutlined className='header__icon'/> 
-            <Link to="/">
-              <img 
-                className='header__logo'
-                src='https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_of_YouTube_%282015-2017%29.svg'
-                alt='#'
-              />
-            </Link>
-          </div>
-          
-          <div className="header__center">
-            <input type='text' 
-                   placeholder='Search' 
-                   onChange={(e) => setInputSearch(e.target.value)}
-                   value={inputSearch}
-            />
-            <Link to={`/inputSearch/${inputSearch}`}>
-              <SearchOutlined  className='header__searchbutton'/>
-            </Link>
-          </div>
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (inputSearch.trim()) {
+      navigate(`/inputSearch/${inputSearch}`);
+    }
+  };
 
-          <div className="header__right">
-            <VideoCameraOutlined  className='header__icon'/>
-            <AppstoreOutlined  className='header__icon'/>
-            <BellOutlined   className='header__icon'/>
-            <UserOutlined />
-          </div>
-        </div>
-    );
+  return (
+    <div className='header'>
+      <div className="header__left">
+        <MenuOutlined className='header__icon' onClick={toggleSidebar} style={{ cursor: 'pointer' }} />
+        <Link to="/">
+          <img
+            className='header__logo'
+            src='https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_of_YouTube_%282015-2017%29.svg'
+            alt='YouTube Logo'
+          />
+        </Link>
+      </div>
+
+      <form className="header__center" onSubmit={handleSearch}>
+        <input
+          type='text'
+          placeholder='Search'
+          onChange={(e) => setInputSearch(e.target.value)}
+          value={inputSearch}
+        />
+        <button type="submit" className='header__searchbutton'>
+          <SearchOutlined />
+        </button>
+      </form>
+
+      <div className="header__right">
+        {/* <VideoCameraOutlined className='header__icon' />
+        <AppstoreOutlined className='header__icon' />
+        <BellOutlined className='header__icon' />
+        <UserOutlined className='header__icon' /> */}
+      </div>
+    </div>
+  );
 }
 
 export default Header;

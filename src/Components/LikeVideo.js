@@ -1,78 +1,92 @@
 import React from "react";
-import ReactPlayer from "react-player";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Header from "./Header";
-import { LikeOutlined, DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 import SideBar from "./SideBar";
-// import {useDispatch} from "react-redux";
 import { DeleteLikeVideo, RemoveLikeVideos } from "../Actions";
+import { DateTime } from "luxon";
+import { useSidebar } from "../context/SidebarContext";
+import "../App.css";
 
 const LikeVideo = () => {
   const L_selector = useSelector((state) => state?.L_reducer?.likeVideoList);
-  console.log("state", L_selector);
-
+  const { isSidebarOpen } = useSidebar();
   const dispatch = useDispatch();
+
+  const formatViews = (count) => {
+    if (count >= 1000000) {
+      return `${(count / 1000000).toFixed(1)}M`;
+    } else if (count >= 1000) {
+      return `${(count / 1000).toFixed(1)}K`;
+    }
+    return count;
+  };
 
   return (
     <div>
       <Header />
       <div className="content">
-        <div className="leftsidebar">
-          <SideBar />
-        </div>
-        <div className="searchvideoes">
-          {L_selector &&
-            L_selector?.length > 0 &&
-            L_selector?.map((video) => {
-              console.log("video", video);
+        {isSidebarOpen && (
+          <div className="leftsidebar">
+            <SideBar />
+          </div>
+        )}
 
-              const url = video?.likeVideoList?.player?.embedHtml;
-              const snippet = video?.likeVideoList?.snippet?.title;
-              const views = video?.likeVideoList?.statistics?.viewCount;
-              const likes = video?.likeVideoList?.statistics?.likeCount;
+        <div className="videos">
+          {L_selector && L_selector.length > 0 ? (
+            <>
+              <div className="page-header">
+                <h2>Liked Videos</h2>
+                <button
+                  className="btn btn-clear"
+                  onClick={() => dispatch(RemoveLikeVideos())}
+                >
+                  Clear All
+                </button>
+              </div>
+              <div className="videocard">
+                {L_selector.map((video) => {
+                  const snippet = video?.snippet;
+                  const timestamp = DateTime.fromISO(snippet?.publishedAt).toRelative();
 
-              return (
-                <>
-                  <div>
-                    <div className="react-player">
-                      <div className="videoplayer">
-                        <ReactPlayer
-                          url={url}
-                          controls
-                          height={300}
-                          width={600}
+                  return (
+                    <div className="video-card-wrapper" key={video.id}>
+                      <div className="info">
+                        <Link to={`/${video.id}`}>
+                          <img
+                            className="videocard__image"
+                            src={snippet?.thumbnails?.medium?.url}
+                            alt={snippet?.title}
+                          />
+                        </Link>
+                        <div className="video-details">
+                          <h6>{snippet?.title}</h6>
+                          <div className="video-channel">{snippet?.channelTitle}</div>
+                          <div className="video-stats">
+                            {formatViews(video?.statistics?.viewCount)} views • {timestamp}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="video-action">
+                        <DeleteOutlined
+                          onClick={() => dispatch(DeleteLikeVideo(video))}
+                          className="delete-icon"
                         />
                       </div>
                     </div>
-                    <div>
-                      <h4 className="title">{snippet}</h4>
-                      <div className="datainfo">
-                        views {views} <br />
-                        <LikeOutlined />
-                        {likes}
-                        <br />
-                        <DeleteOutlined
-                          key={video.id}
-                          onClick={() => dispatch(DeleteLikeVideo(video))}
-                        />{" "}
-                        Remove From Like Videos
-                        <br />
-                        <br />
-                        <br />
-                      </div>
-                    </div>
-                  </div>
-                </>
-              );
-            })}
+                  );
+                })}
+              </div>
+            </>
+          ) : (
+            <div className="empty-state">
+              <h3>No liked videos</h3>
+              <p>Videos you like will appear here</p>
+            </div>
+          )}
         </div>
       </div>
-      <button
-        className="btn"
-        onClick={() => dispatch(RemoveLikeVideos(L_selector))}
-      >
-        clear
-      </button>
     </div>
   );
 };

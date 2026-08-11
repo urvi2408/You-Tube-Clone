@@ -1,42 +1,47 @@
-const intialstate={
+const initialState = {
     WatchLaterList: []
 }
 
-const watchlater_reducer = ( state =  intialstate , action ) => {
-    console.log("data from reducer",action?.payload?.video);
+const watchlater_reducer = (state = initialState, action) => {
+    console.log("data from reducer", action?.payload?.video);
 
     switch (action.type) {
-        case "ADD_WATCHLATER_VIDEO": 
-        return {
-            ...state,
-            WatchLaterList:[
-                ...state.WatchLaterList,
-                {
-                    WatchLaterList:action?.payload?.video
-                }
-            ]
-        }
+        case "ADD_WATCHLATER_VIDEO":
+            // Check if video already exists
+            const existsInWatchLater = state.WatchLaterList.some(
+                video => video.id === action?.payload?.video?.id
+            );
+            
+            if (existsInWatchLater) {
+                return state;
+            }
 
-        case "DELETE_WATCHLATER_VIDEO":
-            const newWatchLaterList = state?.WatchLaterList?.filter((curElem) => {
-                return(
-                    curElem?.WatchLaterList?.id !== action?.payload?.video?.WatchLaterList?.id)
-                }
-                )
             return {
                 ...state,
-                WatchLaterList:newWatchLaterList
-              };
+                WatchLaterList: [
+                    ...state.WatchLaterList,
+                    action?.payload?.video
+                ]
+            }
+
+        case "DELETE_WATCHLATER_VIDEO":
+            const newWatchLaterList = state?.WatchLaterList?.filter((video) => {
+                return video?.id !== action?.payload?.video?.id
+            });
+            return {
+                ...state,
+                WatchLaterList: newWatchLaterList
+            };
 
         case "REMOVE_WATCHLATER_VIDEO":
             return {
-               ...state,
-                WatchLaterList:[]
+                ...state,
+                WatchLaterList: []
             };
 
         default:
-        return state;
-    } 
+            return state;
+    }
 };
 
 export default watchlater_reducer;

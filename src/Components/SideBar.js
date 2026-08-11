@@ -10,14 +10,14 @@ const SideBar = () => {
             <Link to="/home">
             <SideBarRow selected Icon={HomeOutlined } title='Home' />
             </Link>
-            <SideBarRow Icon={FireOutlined } title='Trending' />
+            {/* <SideBarRow Icon={FireOutlined } title='Trending' />
             <SideBarRow Icon={YoutubeOutlined} title='Subscription' />
             <hr/>
-            <SideBarRow Icon={PlaySquareOutlined} title='Library' />
+            <SideBarRow Icon={PlaySquareOutlined} title='Library' /> */}
             <Link to="/history">
             <SideBarRow Icon={HistoryOutlined} title='History' />
             </Link>
-            <SideBarRow Icon={DownloadOutlined } title='Your videos' />
+            {/* <SideBarRow Icon={DownloadOutlined } title='Your videos' /> */}
             <Link to="/watchlater">
             <SideBarRow Icon={FieldTimeOutlined } title='Watch later' />
             </Link>

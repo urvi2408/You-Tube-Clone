@@ -9,23 +9,26 @@ import Watchlater from './Components/WatchLater';
 import LikeVideo from './Components/LikeVideo';
 import  History  from './Components/History';
 import SearchBar from './Components/SearchBar';
+import { SidebarProvider } from './context/SidebarContext';
 
 function App() {
 
   return (
   <>
   <Provider store={Store}>
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/home" element={<Home/>}/>
-      <Route path="/:id" element={<Video/>}/>
-      <Route path='/inputSearch/:inputSearch' element={<SearchBar/>}/>
-      <Route path="/watchlater" element={<Watchlater/>}/>
-      <Route path="/likevideo" element={<LikeVideo/>}/>
-      <Route path="/history" element={<History/>}/>
-    </Routes>
-  </BrowserRouter>  
+    <SidebarProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/home" element={<Home/>}/>
+          <Route path="/:id" element={<Video/>}/>
+          <Route path='/inputSearch/:inputSearch' element={<SearchBar/>}/>
+          <Route path="/watchlater" element={<Watchlater/>}/>
+          <Route path="/likevideo" element={<LikeVideo/>}/>
+          <Route path="/history" element={<History/>}/>
+        </Routes>
+      </BrowserRouter>  
+    </SidebarProvider>
   </Provider>
   </>
   );
